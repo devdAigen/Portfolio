@@ -7,12 +7,22 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@700;900&family=Rajdhani:wght@400;600;700&display=swap');
 :root{
-  --bg:#050510;--bg2:#0a0a1a;--bg3:#0d0d22;
-  --neon:#00f5ff;--neon2:#b400ff;--neon3:#ff003c;--neon4:#39ff14;--neon5:#ff9500;
-  --text:#e0e8ff;--sub:#8090b0;--card:#0e0e24;--border:#1a1a3a;
-  --glow1:0 0 8px #00f5ff,0 0 20px #00f5ff44;
-  --glow2:0 0 8px #b400ff,0 0 20px #b400ff44;
-  --glow3:0 0 8px #39ff14,0 0 20px #39ff1444;
+  color-scheme: light;
+  --bg:#f5f7ff;--bg2:#eef3ff;--bg3:#e8eeff;
+  --neon:#2563eb;--neon2:#7c3aed;--neon3:#dc2626;--neon4:#0f766e;--neon5:#ea580c;
+  --text:#111827;--sub:#4b5563;--card:#ffffff;--border:#dbe3f0;
+  --glow1:0 0 8px #93c5fd,0 0 20px #93c5fd22;
+  --glow2:0 0 8px #c4b5fd,0 0 20px #c4b5fd22;
+  --glow3:0 0 8px #99f6e4,0 0 20px #99f6e422;
+}
+/* Dark theme overrides activated with `body.dark` */
+body.dark{color-scheme:dark;
+  --bg:#0b1220;--bg2:#071026;--bg3:#06111b;
+  --neon:#60a5fa;--neon2:#b084ff;--neon3:#fb7185;--neon4:#34d399;--neon5:#fb923c;
+  --text:#e6eef8;--sub:#94a3b8;--card:#071024;--border:#0f1724;
+  --glow1:0 0 8px #60a5fa22,0 0 20px #60a5fa11;
+  --glow2:0 0 8px #b084ff22,0 0 20px #b084ff11;
+  --glow3:0 0 8px #34d39922,0 0 20px #34d39911;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -20,13 +30,13 @@ body{font-family:'Rajdhani',sans-serif;background:var(--bg);color:var(--text);ov
 .text-text-200{display:none!important;}
 
 /* SCANLINE */
-body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,245,255,.015) 2px,rgba(0,245,255,.015) 4px);pointer-events:none;z-index:9999;}
+body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(37,99,235,.012) 2px,rgba(37,99,235,.012) 4px);pointer-events:none;z-index:9999;}
 
 /* CANVAS BG */
 #bgCanvas{position:fixed;inset:0;z-index:0;pointer-events:none;}
 
 /* NAV */
-nav{position:fixed;top:0;width:100%;z-index:998;background:rgba(5,5,16,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--neon);box-shadow:0 0 20px rgba(0,245,255,.15);padding:0 2rem;}
+nav{position:fixed;top:0;width:100%;z-index:998;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);box-shadow:0 6px 24px rgba(15,23,42,.08);padding:0 2rem;}
 .nav-inner{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;height:58px;gap:1rem;}
 .logo{font-family:'Orbitron',monospace;font-weight:900;font-size:1.1rem;color:var(--neon);text-shadow:var(--glow1);cursor:pointer;letter-spacing:2px;}
 .nav-links{display:flex;gap:.9rem;list-style:none;flex-wrap:wrap;}
@@ -34,6 +44,10 @@ nav{position:fixed;top:0;width:100%;z-index:998;background:rgba(5,5,16,.92);back
 .nav-links a:hover{color:var(--neon);text-shadow:var(--glow1);}
 .nav-linkedin{display:flex;align-items:center;gap:.4rem;background:linear-gradient(135deg,#0077b5,#00a0dc);color:#fff!important;padding:.3rem .8rem;border-radius:4px;font-size:.75rem!important;white-space:nowrap;}
 .nav-linkedin:hover{box-shadow:0 0 12px #00a0dc88!important;color:#fff!important;text-shadow:none!important;}
+
+/* Theme toggle button in the nav */
+#theme-toggle{font-size:1rem;padding:.35rem .6rem;border-radius:6px;background:transparent;border:1px solid transparent;cursor:pointer;transition:.15s;margin-left:.4rem;color:var(--neon);}
+#theme-toggle:hover{background:rgba(0,0,0,.04);}
 
 section{padding:5rem 2rem;position:relative;z-index:1;}
 .section-inner{max-width:1200px;margin:auto;}
@@ -45,7 +59,7 @@ section{padding:5rem 2rem;position:relative;z-index:1;}
 /* BUTTONS */
 .btn{padding:.75rem 1.8rem;border-radius:3px;font-weight:700;font-size:.88rem;cursor:pointer;text-decoration:none;transition:.3s;border:none;display:inline-block;font-family:'Rajdhani',sans-serif;letter-spacing:1px;text-transform:uppercase;}
 .btn-primary{background:transparent;border:1px solid var(--neon);color:var(--neon);box-shadow:var(--glow1),inset 0 0 20px rgba(0,245,255,.05);}
-.btn-primary:hover{background:rgba(0,245,255,.1);box-shadow:0 0 20px #00f5ff,0 0 40px #00f5ff44;}
+.btn-primary:hover{background:rgba(37,99,235,.08);box-shadow:0 0 16px rgba(37,99,235,.2);}
 .btn-purple{background:transparent;border:1px solid var(--neon2);color:var(--neon2);box-shadow:var(--glow2),inset 0 0 20px rgba(180,0,255,.05);}
 .btn-purple:hover{background:rgba(180,0,255,.1);}
 .btn-green{background:transparent;border:1px solid var(--neon4);color:var(--neon4);box-shadow:var(--glow3),inset 0 0 20px rgba(57,255,20,.05);}
@@ -55,7 +69,7 @@ section{padding:5rem 2rem;position:relative;z-index:1;}
 #hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding-top:58px;}
 .hero-content{position:relative;z-index:1;text-align:center;padding:2rem;}
 .hero-badge{display:inline-block;border:1px solid var(--neon4);color:var(--neon4);padding:.35rem 1.2rem;border-radius:2px;font-size:.75rem;font-weight:700;letter-spacing:2px;margin-bottom:1.5rem;text-transform:uppercase;box-shadow:var(--glow3);}
-.hero-name{font-family:'Orbitron',monospace;font-size:clamp(2rem,5.5vw,4.5rem);font-weight:900;line-height:1.1;margin-bottom:.5rem;color:#fff;text-shadow:0 0 30px rgba(0,245,255,.5);}
+.hero-name{font-family:'Orbitron',monospace;font-size:clamp(2rem,5.5vw,4.5rem);font-weight:900;line-height:1.1;margin-bottom:.5rem;color:var(--text);text-shadow:none;}
 .hero-name span{color:var(--neon);}
 .typewriter{font-family:'Share Tech Mono',monospace;font-size:clamp(.9rem,2vw,1.3rem);color:var(--neon4);min-height:2rem;margin-bottom:1.5rem;letter-spacing:1px;}
 .hero-summary{max-width:620px;margin:0 auto 2rem;color:var(--sub);line-height:1.8;font-size:.95rem;letter-spacing:.5px;}
@@ -69,7 +83,7 @@ section{padding:5rem 2rem;position:relative;z-index:1;}
 .visitor-count{font-family:'Orbitron',monospace;font-size:1rem;font-weight:700;color:var(--neon4);text-shadow:var(--glow3);}
 
 /* EXPERIENCE */
-#experience{background:rgba(10,10,26,.7);}
+#experience{background:rgba(255,255,255,.72);}
 .timeline{position:relative;max-width:800px;margin:auto;}
 .timeline::before{content:'';position:absolute;left:18px;top:0;bottom:0;width:1px;background:linear-gradient(180deg,var(--neon),var(--neon2),var(--neon4),var(--neon3));}
 .tl-item{position:relative;padding:0 0 2.5rem 55px;}
@@ -94,11 +108,17 @@ section{padding:5rem 2rem;position:relative;z-index:1;}
 .skill-tag{padding:.25rem .75rem;border-radius:2px;font-size:.75rem;font-weight:700;font-family:'Share Tech Mono',monospace;letter-spacing:.5px;}
 
 /* PROJECTS */
-#projects{background:rgba(10,10,26,.7);}
+#projects{background:rgba(255,255,255,.72);}
 .projects-grid{display:grid;gap:1rem;grid-template-columns:repeat(12,1fr);}
-.proj-card{border-radius:4px;overflow:hidden;border:1px solid var(--border);transition:.3s all;background:var(--card);display:flex;flex-direction:column;position:relative;}
-.proj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--neon),transparent);opacity:0;transition:.3s;}
-.proj-card:hover{border-color:var(--neon);box-shadow:0 0 25px rgba(0,245,255,.12);transform:translateY(-3px);}
+.proj-card{position:relative;min-height:260px;border-radius:16px;perspective:1400px;cursor:pointer;outline:none;}
+.proj-card:focus-visible{box-shadow:0 0 0 2px rgba(37,99,235,.25);}
+.proj-flipper{position:relative;width:100%;height:100%;min-height:260px;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.2,.9,.2,1);}
+.proj-card:hover .proj-flipper,.proj-card:focus-within .proj-flipper,.proj-card.is-flipped .proj-flipper{transform:rotateY(180deg);} 
+.proj-face{position:absolute;inset:0;backface-visibility:hidden;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--card);box-shadow:0 12px 28px rgba(15,23,42,.08);transition:border-color .25s ease,box-shadow .25s ease,transform .25s ease;}
+.proj-card:hover .proj-face,.proj-card:focus-within .proj-face{border-color:var(--neon);box-shadow:0 18px 36px rgba(37,99,235,.16);} 
+.proj-front{display:flex;flex-direction:column;position:relative;}
+.proj-back{transform:rotateY(180deg);display:flex;align-items:center;justify-content:center;padding:1.3rem;background:linear-gradient(135deg,rgba(37,99,235,.08),rgba(124,58,237,.08));}
+.proj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--neon),transparent);opacity:0;transition:.3s;z-index:2;}
 .proj-card:hover::before{opacity:1;}
 .proj-card.featured{grid-column:span 7;}
 .proj-card.medium{grid-column:span 5;}
@@ -113,20 +133,21 @@ section{padding:5rem 2rem;position:relative;z-index:1;}
 .proj-company{font-size:.75rem;color:var(--neon2);margin-bottom:.6rem;font-family:'Share Tech Mono',monospace;}
 .proj-desc{font-size:.84rem;color:var(--sub);line-height:1.65;margin-bottom:.9rem;flex:1;}
 .proj-tags{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:.8rem;}
-.proj-tag{background:rgba(0,245,255,.06);color:var(--neon);border:1px solid rgba(0,245,255,.2);padding:.15rem .55rem;border-radius:2px;font-size:.7rem;font-family:'Share Tech Mono',monospace;}
+.proj-tag{background:rgba(37,99,235,.06);color:var(--neon);border:1px solid rgba(37,99,235,.18);padding:.15rem .55rem;border-radius:999px;font-size:.7rem;font-family:'Share Tech Mono',monospace;}
 .proj-links{display:flex;gap:.5rem;flex-wrap:wrap;}
-.proj-link{font-size:.74rem;font-weight:700;color:var(--neon);text-decoration:none;border:1px solid rgba(0,245,255,.3);padding:.22rem .7rem;border-radius:2px;transition:.2s;font-family:'Share Tech Mono',monospace;}
-.proj-link:hover{background:rgba(0,245,255,.1);border-color:var(--neon);}
-.proj-link.gh{border-color:rgba(255,255,255,.2);color:var(--sub);}
-.proj-link.gh:hover{background:rgba(255,255,255,.06);color:#fff;border-color:rgba(255,255,255,.5);}
+.proj-link{font-size:.74rem;font-weight:700;color:var(--neon);text-decoration:none;border:1px solid rgba(37,99,235,.22);padding:.22rem .7rem;border-radius:999px;transition:.2s;font-family:'Share Tech Mono',monospace;}
+.proj-link:hover{background:rgba(37,99,235,.08);border-color:var(--neon);} 
+.proj-link.gh{border-color:rgba(15,23,42,.12);color:var(--sub);} 
+.proj-link.gh:hover{background:rgba(15,23,42,.06);color:var(--text);border-color:rgba(15,23,42,.2);} 
+.proj-back-content{display:flex;flex-direction:column;gap:.7rem;width:100%;}
+.proj-back-title{font-family:'Orbitron',monospace;font-size:.95rem;font-weight:800;color:var(--neon);letter-spacing:1px;}
+.proj-back-copy{font-size:.82rem;color:var(--sub);line-height:1.6;}
+.proj-back-hint{font-size:.7rem;color:var(--neon2);font-family:'Share Tech Mono',monospace;text-transform:uppercase;letter-spacing:1px;}
 .proj-card.hidden-proj{display:none;}
-.proj-card.hidden-proj.revealed{display:flex;}
+.proj-card.hidden-proj.revealed{display:block;}
 .show-more-wrap{grid-column:span 12;text-align:center;margin-top:.5rem;}
-.show-more-btn{padding:.6rem 2rem;border-radius:2px;border:1px dashed rgba(0,245,255,.4);background:transparent;color:var(--neon);font-weight:700;font-size:.82rem;cursor:pointer;transition:.3s;font-family:'Rajdhani',sans-serif;letter-spacing:1px;text-transform:uppercase;}
-.show-more-btn:hover{border-style:solid;background:rgba(0,245,255,.06);box-shadow:var(--glow1);}
-
-/* GITHUB */
-#github{background:var(--bg);}
+.show-more-btn{padding:.6rem 2rem;border-radius:999px;border:1px dashed rgba(37,99,235,.35);background:transparent;color:var(--neon);font-weight:700;font-size:.82rem;cursor:pointer;transition:.3s;font-family:'Rajdhani',sans-serif;letter-spacing:1px;text-transform:uppercase;}
+.show-more-btn:hover{border-style:solid;background:rgba(37,99,235,.06);box-shadow:0 0 12px rgba(37,99,235,.14);}
 .github-card{background:var(--card);border:1px solid var(--border);border-radius:4px;padding:2rem;max-width:800px;margin:auto;border-top:2px solid var(--neon);box-shadow:0 0 30px rgba(0,245,255,.05);}
 .gh-top{display:flex;align-items:center;gap:1.5rem;margin-bottom:1.5rem;flex-wrap:wrap;}
 .gh-avatar{width:66px;height:66px;border-radius:50%;border:2px solid var(--neon);display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0;background:var(--bg);box-shadow:var(--glow1);}
@@ -145,12 +166,12 @@ section{padding:5rem 2rem;position:relative;z-index:1;}
 .gh-repo-meta{display:flex;gap:.75rem;font-size:.7rem;color:var(--sub);font-family:'Share Tech Mono',monospace;}
 
 /* CHESS */
-#hobbies{background:rgba(10,10,26,.7);}
+#hobbies{background:rgba(255,255,255,.72);}
 .hobbies-layout{display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:start;}
 .chess-wrap{display:flex;flex-direction:column;align-items:center;gap:.75rem;}
 .chess-board{display:grid;grid-template-columns:repeat(8,46px);grid-template-rows:repeat(8,46px);border:2px solid var(--neon);border-radius:2px;overflow:hidden;box-shadow:var(--glow1),0 0 40px rgba(0,245,255,.1);}
 .csq{width:46px;height:46px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;cursor:pointer;transition:.1s;position:relative;user-select:none;}
-.csq.light{background:#0d1520;}.csq.dark{background:#0a0e18;}
+.csq.light{background:#f7f9fe;}.csq.dark{background:#e7edf8;}
 .csq.selected{outline:2px solid var(--neon);outline-offset:-2px;z-index:1;background:rgba(0,245,255,.15)!important;}
 .csq.possible::after{content:'';position:absolute;width:12px;height:12px;background:rgba(57,255,20,.5);border-radius:50%;pointer-events:none;box-shadow:var(--glow3);}
 .chess-info{background:var(--card);border:1px solid var(--border);border-radius:3px;padding:.6rem 1rem;font-size:.8rem;color:var(--sub);text-align:center;min-width:370px;font-family:'Share Tech Mono',monospace;}
@@ -193,7 +214,7 @@ section{padding:5rem 2rem;position:relative;z-index:1;}
 .hm-lb-row:last-child{border:none;}
 
 /* CONTACT */
-#contact{background:rgba(10,10,26,.9);}
+#contact{background:rgba(248,250,255,.95);}
 #contact .section-title h2{color:var(--neon2);text-shadow:var(--glow2);}
 #contact .section-title .line{background:linear-gradient(90deg,transparent,var(--neon2),transparent);}
 .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:2rem;max-width:900px;margin:auto;}
@@ -241,6 +262,7 @@ section{padding:5rem 2rem;position:relative;z-index:1;}
       <li><a data-target="hangman">Game</a></li>
       <li><a data-target="contact">Hire Me</a></li>
     </ul>
+    <button id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">🌙</button>
   </div>
 </nav>
 
@@ -320,95 +342,160 @@ section{padding:5rem 2rem;position:relative;z-index:1;}
     <div class="section-title fade-in"><h2>// PROJECTS</h2><div class="line"></div><p>Things I've built that I'm proud of</p></div>
     <div class="projects-grid fade-in">
 
-      <div class="proj-card featured"><div class="proj-accent" style="background:linear-gradient(90deg,var(--neon),var(--neon2));"></div>
-        <div class="proj-body"><div class="proj-title">INTELLIFY</div><div class="proj-company">// cross_country_infotech • 2024–present</div>
-        <div class="proj-desc">Healthcare platform integrated with external systems via webhooks. Reduced backend response time by 30% supporting 1K+ concurrent users with async AWS communication. Full ownership from Angular UI to .NET microservices.</div>
-        <div class="proj-tags"><span class="proj-tag">.NET 8</span><span class="proj-tag">Angular 15</span><span class="proj-tag">AWS SQS</span><span class="proj-tag">Redis</span><span class="proj-tag">PostgreSQL</span></div>
-        <div class="proj-links"><a href="https://claude.ai/public/artifacts/0bb2e8e2-5fa7-4293-8cb1-582cc373b156" target="_blank" rel="noopener" class="proj-link">[ LIVE DEMO ]</a></div></div>
+      <div class="proj-card featured" tabindex="0" onclick="this.classList.toggle('is-flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('is-flipped');}">
+        <div class="proj-flipper">
+          <div class="proj-face proj-front"><div class="proj-accent" style="background:linear-gradient(90deg,var(--neon),var(--neon2));"></div>
+            <div class="proj-body"><div class="proj-title">INTELLIFY</div><div class="proj-company">// cross_country_infotech • 2024–present</div>
+            <div class="proj-desc">Healthcare platform integrated with external systems via webhooks. Reduced backend response time by 30% supporting 1K+ concurrent users with async AWS communication. Full ownership from Angular UI to .NET microservices.</div>
+            <div class="proj-tags"><span class="proj-tag">.NET 8</span><span class="proj-tag">Angular 15</span><span class="proj-tag">AWS SQS</span><span class="proj-tag">Redis</span><span class="proj-tag">PostgreSQL</span></div>
+            <div class="proj-links"><a href="https://claude.ai/public/artifacts/0bb2e8e2-5fa7-4293-8cb1-582cc373b156" target="_blank" rel="noopener" class="proj-link">[ LIVE DEMO ]</a></div></div>
+          </div>
+          <div class="proj-face proj-back"><div class="proj-back-content"><div class="proj-back-title">INTELLIFY</div><div class="proj-back-copy">A healthcare platform with resilient integrations, async workflows, and measurable performance improvements for high-traffic operations.</div><div class="proj-back-hint">Click to flip back</div></div></div>
+        </div>
       </div>
 
-      <div class="proj-card medium"><div class="proj-accent" style="background:linear-gradient(90deg,var(--neon2),var(--neon5));"></div>
-        <div class="proj-body"><div class="proj-title">AIRBUS IOT MONITOR</div><div class="proj-company">// alten_india • 2023–2024</div>
-        <div class="proj-desc">IoT cargo telemetry tracking. Real-time dashboards for monitoring and alerting with historical data visualization and secure API gateway.</div>
-        <div class="proj-tags"><span class="proj-tag">IoT</span><span class="proj-tag">.NET Core</span><span class="proj-tag">Angular</span><span class="proj-tag">JWT</span></div>
-        <div class="proj-links"><a href="https://github.com/devdAigen" target="_blank" rel="noopener" class="proj-link gh">[ GITHUB ]</a></div></div>
+      <div class="proj-card medium" tabindex="0" onclick="this.classList.toggle('is-flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('is-flipped');}">
+        <div class="proj-flipper">
+          <div class="proj-face proj-front"><div class="proj-accent" style="background:linear-gradient(90deg,var(--neon2),var(--neon5));"></div>
+            <div class="proj-body"><div class="proj-title">AIRBUS IOT MONITOR</div><div class="proj-company">// alten_india • 2023–2024</div>
+            <div class="proj-desc">IoT cargo telemetry tracking. Real-time dashboards for monitoring and alerting with historical data visualization and secure API gateway.</div>
+            <div class="proj-tags"><span class="proj-tag">IoT</span><span class="proj-tag">.NET Core</span><span class="proj-tag">Angular</span><span class="proj-tag">JWT</span></div>
+            <div class="proj-links"><a href="https://github.com/devdAigen" target="_blank" rel="noopener" class="proj-link gh">[ GITHUB ]</a></div></div>
+          </div>
+          <div class="proj-face proj-back"><div class="proj-back-content"><div class="proj-back-title">AIRBUS IOT MONITOR</div><div class="proj-back-copy">Delivered a secure telemetry monitoring experience with real-time visualization and alerting for cargo operations.</div><div class="proj-back-hint">Click to flip back</div></div></div>
+        </div>
       </div>
 
-      <div class="proj-card slim"><div class="proj-accent" style="background:linear-gradient(90deg,var(--neon4),var(--neon));"></div>
-        <div class="proj-body"><div class="proj-title">AUTO JOB FILL PRO</div><div class="proj-company">// chrome_extension</div>
-        <div class="proj-desc">MV3 Chrome extension auto-filling job portals using fuzzy matching. LinkedIn, Naukri & Workday ready.</div>
-        <div class="proj-tags"><span class="proj-tag">Chrome MV3</span><span class="proj-tag">JavaScript</span></div>
-        <div class="proj-links"><a href="https://github.com/devdAigen/Auto-Job-Fill-Pro" target="_blank" rel="noopener" class="proj-link gh">[ GITHUB ]</a></div></div>
+      <div class="proj-card slim" tabindex="0" onclick="this.classList.toggle('is-flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('is-flipped');}">
+        <div class="proj-flipper">
+          <div class="proj-face proj-front"><div class="proj-accent" style="background:linear-gradient(90deg,var(--neon4),var(--neon));"></div>
+            <div class="proj-body"><div class="proj-title">AUTO JOB FILL PRO</div><div class="proj-company">// chrome_extension</div>
+            <div class="proj-desc">MV3 Chrome extension auto-filling job portals using fuzzy matching. LinkedIn, Naukri & Workday ready.</div>
+            <div class="proj-tags"><span class="proj-tag">Chrome MV3</span><span class="proj-tag">JavaScript</span></div>
+            <div class="proj-links"><a href="https://github.com/devdAigen/Auto-Job-Fill-Pro" target="_blank" rel="noopener" class="proj-link gh">[ GITHUB ]</a></div></div>
+          </div>
+          <div class="proj-face proj-back"><div class="proj-back-content"><div class="proj-back-title">AUTO JOB FILL PRO</div><div class="proj-back-copy">A smart browser extension that saves time by auto-filling common job application fields across major portals.</div><div class="proj-back-hint">Click to flip back</div></div></div>
+        </div>
       </div>
 
-      <div class="proj-card wide"><div class="proj-accent" style="background:linear-gradient(90deg,#00b09b,#96c93d);"></div>
-        <div class="proj-body"><div class="proj-title">ARDUINO HOME SECURITY & AUTOMATION</div><div class="proj-company">// embedded_iot_project</div>
-        <div class="proj-desc">Real-world embedded automation using Arduino, PIR motion sensing, and ESP8266 Wi-Fi. Detects unauthorized entry, triggers security alerts, and enables smartphone-based control of electrical devices.</div>
-        <div class="proj-tags"><span class="proj-tag">Arduino</span><span class="proj-tag">ESP8266</span><span class="proj-tag">PIR Sensor</span><span class="proj-tag">IoT</span><span class="proj-tag">C++</span></div>
-        <div class="proj-links"><a href="https://github.com/devdAigen" target="_blank" rel="noopener" class="proj-link gh">[ GITHUB ]</a></div></div>
+      <div class="proj-card wide" tabindex="0" onclick="this.classList.toggle('is-flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('is-flipped');}">
+        <div class="proj-flipper">
+          <div class="proj-face proj-front"><div class="proj-accent" style="background:linear-gradient(90deg,#00b09b,#96c93d);"></div>
+            <div class="proj-body"><div class="proj-title">ARDUINO HOME SECURITY & AUTOMATION</div><div class="proj-company">// embedded_iot_project</div>
+            <div class="proj-desc">Real-world embedded automation using Arduino, PIR motion sensing, and ESP8266 Wi-Fi. Detects unauthorized entry, triggers security alerts, and enables smartphone-based control of electrical devices.</div>
+            <div class="proj-tags"><span class="proj-tag">Arduino</span><span class="proj-tag">ESP8266</span><span class="proj-tag">PIR Sensor</span><span class="proj-tag">IoT</span><span class="proj-tag">C++</span></div>
+            <div class="proj-links"><a href="https://github.com/devdAigen" target="_blank" rel="noopener" class="proj-link gh">[ GITHUB ]</a></div></div>
+          </div>
+          <div class="proj-face proj-back"><div class="proj-back-content"><div class="proj-back-title">ARDUINO HOME SECURITY</div><div class="proj-back-copy">Built a practical IoT prototype that combines motion sensing, wireless alerts, and device automation for home security.</div><div class="proj-back-hint">Click to flip back</div></div></div>
+        </div>
       </div>
 
-      <div class="proj-card half"><div class="proj-accent" style="background:linear-gradient(90deg,#e84393,#f953c6);"></div>
-        <div class="proj-body"><div class="proj-title">ONLINE DATING APP</div><div class="proj-company">// college_project</div>
-        <div class="proj-desc">Matchmaking platform with interest-based pairing, profile browsing, and mutual match detection.</div>
-        <div class="proj-tags"><span class="proj-tag">PHP</span><span class="proj-tag">MySQL</span></div>
-        <div class="proj-links"><a href="https://github.com/devdAigen/online-dating-app" target="_blank" rel="noopener" class="proj-link gh">[ GITHUB ]</a></div></div>
+      <div class="proj-card half" tabindex="0" onclick="this.classList.toggle('is-flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('is-flipped');}">
+        <div class="proj-flipper">
+          <div class="proj-face proj-front"><div class="proj-accent" style="background:linear-gradient(90deg,#e84393,#f953c6);"></div>
+            <div class="proj-body"><div class="proj-title">ONLINE DATING APP</div><div class="proj-company">// college_project</div>
+            <div class="proj-desc">Matchmaking platform with interest-based pairing, profile browsing, and mutual match detection.</div>
+            <div class="proj-tags"><span class="proj-tag">PHP</span><span class="proj-tag">MySQL</span></div>
+            <div class="proj-links"><a href="https://github.com/devdAigen/online-dating-app" target="_blank" rel="noopener" class="proj-link gh">[ GITHUB ]</a></div></div>
+          </div>
+          <div class="proj-face proj-back"><div class="proj-back-content"><div class="proj-back-title">ONLINE DATING APP</div><div class="proj-back-copy">Created a social platform experience centered around profiles, interests, and mutual matching logic.</div><div class="proj-back-hint">Click to flip back</div></div></div>
+        </div>
       </div>
 
-      <div class="proj-card half"><div class="proj-accent" style="background:linear-gradient(90deg,#11998e,#38ef7d);"></div>
-        <div class="proj-body"><div class="proj-title">MANGALORE RENTALS</div><div class="proj-company">// personal_project</div>
-        <div class="proj-desc">Rental listing website for browsing available properties with a clean, accessible interface across categories.</div>
-        <div class="proj-tags"><span class="proj-tag">PHP</span><span class="proj-tag">MySQL</span></div>
-        <div class="proj-links"><a href="https://github.com/devdAigen/mangalore-rentals" target="_blank" rel="noopener" class="proj-link gh">[ GITHUB ]</a></div></div>
+      <div class="proj-card half" tabindex="0" onclick="this.classList.toggle('is-flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('is-flipped');}">
+        <div class="proj-flipper">
+          <div class="proj-face proj-front"><div class="proj-accent" style="background:linear-gradient(90deg,#11998e,#38ef7d);"></div>
+            <div class="proj-body"><div class="proj-title">MANGALORE RENTALS</div><div class="proj-company">// personal_project</div>
+            <div class="proj-desc">Rental listing website for browsing available properties with a clean, accessible interface across categories.</div>
+            <div class="proj-tags"><span class="proj-tag">PHP</span><span class="proj-tag">MySQL</span></div>
+            <div class="proj-links"><a href="https://github.com/devdAigen/mangalore-rentals" target="_blank" rel="noopener" class="proj-link gh">[ GITHUB ]</a></div></div>
+          </div>
+          <div class="proj-face proj-back"><div class="proj-back-content"><div class="proj-back-title">MANGALORE RENTALS</div><div class="proj-back-copy">Built a polished property browsing experience with categorized listings and a simple user flow.</div><div class="proj-back-hint">Click to flip back</div></div></div>
+        </div>
       </div>
 
-      <div class="proj-card medium"><div class="proj-accent" style="background:linear-gradient(90deg,#0078d4,#00bcf2);"></div>
-        <div class="proj-body"><div class="proj-title">AZURE SEARCH SERVICE</div><div class="proj-company">// cloud_project</div>
-        <div class="proj-desc">Cloud-based search integration using Azure Cognitive Search — scalable full-text and faceted search with optimized query pipelines.</div>
-        <div class="proj-tags"><span class="proj-tag">Azure</span><span class="proj-tag">TypeScript</span></div>
-        <div class="proj-links"><a href="https://github.com/devdAigen/Azure-Search-service" target="_blank" rel="noopener" class="proj-link gh">[ GITHUB ]</a></div></div>
+      <div class="proj-card medium" tabindex="0" onclick="this.classList.toggle('is-flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('is-flipped');}">
+        <div class="proj-flipper">
+          <div class="proj-face proj-front"><div class="proj-accent" style="background:linear-gradient(90deg,#0078d4,#00bcf2);"></div>
+            <div class="proj-body"><div class="proj-title">AZURE SEARCH SERVICE</div><div class="proj-company">// cloud_project</div>
+            <div class="proj-desc">Cloud-based search integration using Azure Cognitive Search — scalable full-text and faceted search with optimized query pipelines.</div>
+            <div class="proj-tags"><span class="proj-tag">Azure</span><span class="proj-tag">TypeScript</span></div>
+            <div class="proj-links"><a href="https://github.com/devdAigen/Azure-Search-service" target="_blank" rel="noopener" class="proj-link gh">[ GITHUB ]</a></div></div>
+          </div>
+          <div class="proj-face proj-back"><div class="proj-back-content"><div class="proj-back-title">AZURE SEARCH SERVICE</div><div class="proj-back-copy">Implemented a modern search experience with faceted filtering and scalable cloud search capabilities.</div><div class="proj-back-hint">Click to flip back</div></div></div>
+        </div>
       </div>
 
-      <div class="proj-card slim"><div class="proj-accent" style="background:linear-gradient(90deg,#f7971e,#f953c6);"></div>
-        <div class="proj-body"><div class="proj-title">MOVIE CRAWLER</div><div class="proj-company">// personal_project</div>
-        <div class="proj-desc">Aggregates movie listings from multiple sources into a unified output.</div>
-        <div class="proj-tags"><span class="proj-tag">JavaScript</span><span class="proj-tag">Scraping</span></div>
-        <div class="proj-links"><a href="https://github.com/devdAigen/Movie-crawler" target="_blank" rel="noopener" class="proj-link gh">[ GITHUB ]</a></div></div>
+      <div class="proj-card slim" tabindex="0" onclick="this.classList.toggle('is-flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('is-flipped');}">
+        <div class="proj-flipper">
+          <div class="proj-face proj-front"><div class="proj-accent" style="background:linear-gradient(90deg,#f7971e,#f953c6);"></div>
+            <div class="proj-body"><div class="proj-title">MOVIE CRAWLER</div><div class="proj-company">// personal_project</div>
+            <div class="proj-desc">Aggregates movie listings from multiple sources into a unified output.</div>
+            <div class="proj-tags"><span class="proj-tag">JavaScript</span><span class="proj-tag">Scraping</span></div>
+            <div class="proj-links"><a href="https://github.com/devdAigen/Movie-crawler" target="_blank" rel="noopener" class="proj-link gh">[ GITHUB ]</a></div></div>
+          </div>
+          <div class="proj-face proj-back"><div class="proj-back-content"><div class="proj-back-title">MOVIE CRAWLER</div><div class="proj-back-copy">Collected and normalized movie data from multiple sources into a single, usable dataset.</div><div class="proj-back-hint">Click to flip back</div></div></div>
+        </div>
       </div>
 
-      <div class="proj-card slim"><div class="proj-accent" style="background:linear-gradient(90deg,#6C63FF,#43E97B);"></div>
-        <div class="proj-body"><div class="proj-title">E-CART</div><div class="proj-company">// personal_project</div>
-        <div class="proj-desc">Full-stack e-commerce app with product listing, cart and order processing.</div>
-        <div class="proj-tags"><span class="proj-tag">C#</span><span class="proj-tag">.NET</span><span class="proj-tag">Angular</span></div>
-        <div class="proj-links"><a href="https://github.com/devdAigen/E-Cart" target="_blank" rel="noopener" class="proj-link gh">[ GITHUB ]</a></div></div>
+      <div class="proj-card slim" tabindex="0" onclick="this.classList.toggle('is-flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('is-flipped');}">
+        <div class="proj-flipper">
+          <div class="proj-face proj-front"><div class="proj-accent" style="background:linear-gradient(90deg,#6C63FF,#43E97B);"></div>
+            <div class="proj-body"><div class="proj-title">E-CART</div><div class="proj-company">// personal_project</div>
+            <div class="proj-desc">Full-stack e-commerce app with product listing, cart and order processing.</div>
+            <div class="proj-tags"><span class="proj-tag">C#</span><span class="proj-tag">.NET</span><span class="proj-tag">Angular</span></div>
+            <div class="proj-links"><a href="https://github.com/devdAigen/E-Cart" target="_blank" rel="noopener" class="proj-link gh">[ GITHUB ]</a></div></div>
+          </div>
+          <div class="proj-face proj-back"><div class="proj-back-content"><div class="proj-back-title">E-CART</div><div class="proj-back-copy">Built a compact e-commerce flow covering browsing, cart management, and checkout logic end to end.</div><div class="proj-back-hint">Click to flip back</div></div></div>
+        </div>
       </div>
 
-      <div class="proj-card slim"><div class="proj-accent" style="background:linear-gradient(90deg,#43E97B,#38f9d7);"></div>
-        <div class="proj-body"><div class="proj-title">SHARPMINDZ</div><div class="proj-company">// college_project</div>
-        <div class="proj-desc">Online MCQ quiz for IQ testing and entrance exam prep with score tracking.</div>
-        <div class="proj-tags"><span class="proj-tag">PHP</span><span class="proj-tag">MySQL</span></div>
-        <div class="proj-links"><a href="https://github.com/devdAigen/SharpMindz" target="_blank" rel="noopener" class="proj-link gh">[ GITHUB ]</a></div></div>
+      <div class="proj-card slim" tabindex="0" onclick="this.classList.toggle('is-flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('is-flipped');}">
+        <div class="proj-flipper">
+          <div class="proj-face proj-front"><div class="proj-accent" style="background:linear-gradient(90deg,#43E97B,#38f9d7);"></div>
+            <div class="proj-body"><div class="proj-title">SHARPMINDZ</div><div class="proj-company">// college_project</div>
+            <div class="proj-desc">Online MCQ quiz for IQ testing and entrance exam prep with score tracking.</div>
+            <div class="proj-tags"><span class="proj-tag">PHP</span><span class="proj-tag">MySQL</span></div>
+            <div class="proj-links"><a href="https://github.com/devdAigen/SharpMindz" target="_blank" rel="noopener" class="proj-link gh">[ GITHUB ]</a></div></div>
+          </div>
+          <div class="proj-face proj-back"><div class="proj-back-content"><div class="proj-back-title">SHARPMINDZ</div><div class="proj-back-copy">Designed an interactive quiz platform with score tracking and a streamlined exam-taking experience.</div><div class="proj-back-hint">Click to flip back</div></div></div>
+        </div>
       </div>
 
-      <div class="proj-card half hidden-proj"><div class="proj-accent" style="background:linear-gradient(90deg,#f7df1e,#f9ca24);"></div>
-        <div class="proj-body"><div class="proj-title">THE MOST SEARCHED</div><div class="proj-company">// personal_project • game</div>
-        <div class="proj-desc">Guessing game — pick which of two items has more Google searches.</div>
-        <div class="proj-tags"><span class="proj-tag">CSS</span><span class="proj-tag">JavaScript</span></div>
-        <div class="proj-links"><a href="https://github.com/devdAigen/TheMostSearched" target="_blank" rel="noopener" class="proj-link gh">[ GITHUB ]</a></div></div>
+      <div class="proj-card half hidden-proj" tabindex="0" onclick="this.classList.toggle('is-flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('is-flipped');}">
+        <div class="proj-flipper">
+          <div class="proj-face proj-front"><div class="proj-accent" style="background:linear-gradient(90deg,#f7df1e,#f9ca24);"></div>
+            <div class="proj-body"><div class="proj-title">THE MOST SEARCHED</div><div class="proj-company">// personal_project • game</div>
+            <div class="proj-desc">Guessing game — pick which of two items has more Google searches.</div>
+            <div class="proj-tags"><span class="proj-tag">CSS</span><span class="proj-tag">JavaScript</span></div>
+            <div class="proj-links"><a href="https://github.com/devdAigen/TheMostSearched" target="_blank" rel="noopener" class="proj-link gh">[ GITHUB ]</a></div></div>
+          </div>
+          <div class="proj-face proj-back"><div class="proj-back-content"><div class="proj-back-title">THE MOST SEARCHED</div><div class="proj-back-copy">A playful front-end game that mixes simple UI with a surprisingly engaging comparison mechanic.</div><div class="proj-back-hint">Click to flip back</div></div></div>
+        </div>
       </div>
 
-      <div class="proj-card half hidden-proj"><div class="proj-accent" style="background:linear-gradient(90deg,#00C6FB,#005BEA);"></div>
-        <div class="proj-body"><div class="proj-title">NETFLIEX PRIME</div><div class="proj-company">// personal_project</div>
-        <div class="proj-desc">Netflix/Prime inspired streaming UI built with TypeScript showcasing frontend architecture.</div>
-        <div class="proj-tags"><span class="proj-tag">TypeScript</span><span class="proj-tag">UI/UX</span></div>
-        <div class="proj-links"><a href="https://github.com/devdAigen/Netfliex-Prime" target="_blank" rel="noopener" class="proj-link gh">[ GITHUB ]</a></div></div>
+      <div class="proj-card half hidden-proj" tabindex="0" onclick="this.classList.toggle('is-flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('is-flipped');}">
+        <div class="proj-flipper">
+          <div class="proj-face proj-front"><div class="proj-accent" style="background:linear-gradient(90deg,#00C6FB,#005BEA);"></div>
+            <div class="proj-body"><div class="proj-title">NETFLIEX PRIME</div><div class="proj-company">// personal_project</div>
+            <div class="proj-desc">Netflix/Prime inspired streaming UI built with TypeScript showcasing frontend architecture.</div>
+            <div class="proj-tags"><span class="proj-tag">TypeScript</span><span class="proj-tag">UI/UX</span></div>
+            <div class="proj-links"><a href="https://github.com/devdAigen/Netfliex-Prime" target="_blank" rel="noopener" class="proj-link gh">[ GITHUB ]</a></div></div>
+          </div>
+          <div class="proj-face proj-back"><div class="proj-back-content"><div class="proj-back-title">NETFLIEX PRIME</div><div class="proj-back-copy">Explored a polished streaming-style interface with strong component structure and reactive UI patterns.</div><div class="proj-back-hint">Click to flip back</div></div></div>
+        </div>
       </div>
 
-      <div class="proj-card half hidden-proj"><div class="proj-accent" style="background:linear-gradient(90deg,#F7971E,#FFD200);"></div>
-        <div class="proj-body"><div class="proj-title">CURRENCY CONVERTER</div><div class="proj-company">// personal_project</div>
-        <div class="proj-desc">Live currency converter with real-time exchange rates — minimal TypeScript UI.</div>
-        <div class="proj-tags"><span class="proj-tag">TypeScript</span><span class="proj-tag">REST API</span></div>
-        <div class="proj-links"><a href="https://github.com/devdAigen/Currency-Converter" target="_blank" rel="noopener" class="proj-link gh">[ GITHUB ]</a></div></div>
+      <div class="proj-card half hidden-proj" tabindex="0" onclick="this.classList.toggle('is-flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('is-flipped');}">
+        <div class="proj-flipper">
+          <div class="proj-face proj-front"><div class="proj-accent" style="background:linear-gradient(90deg,#F7971E,#FFD200);"></div>
+            <div class="proj-body"><div class="proj-title">CURRENCY CONVERTER</div><div class="proj-company">// personal_project</div>
+            <div class="proj-desc">Live currency converter with real-time exchange rates — minimal TypeScript UI.</div>
+            <div class="proj-tags"><span class="proj-tag">TypeScript</span><span class="proj-tag">REST API</span></div>
+            <div class="proj-links"><a href="https://github.com/devdAigen/Currency-Converter" target="_blank" rel="noopener" class="proj-link gh">[ GITHUB ]</a></div></div>
+          </div>
+          <div class="proj-face proj-back"><div class="proj-back-content"><div class="proj-back-title">CURRENCY CONVERTER</div><div class="proj-back-copy">Built a lightweight app that fetches live rates and presents a simple conversion experience.</div><div class="proj-back-hint">Click to flip back</div></div></div>
+        </div>
       </div>
 
       <div class="show-more-wrap">
@@ -573,7 +660,7 @@ function toggleMoreProjects(){moreShown=!moreShown;document.querySelectorAll('.h
 
 // ===== GITHUB GRID =====
 const gg=document.getElementById('ghGrid');
-const ghC=['#0d1a0d','#1a3a1a','#2a5a2a','#39ff14','#80ff50'];
+const ghC=['#e0f2fe','#bae6fd','#7dd3fc','#0ea5e9','#1d4ed8'];
 for(let i=0;i<364;i++){const cc=document.createElement('div');cc.className='gh-cell';const w=Math.random();cc.style.background=ghC[w<.38?0:w<.58?1:w<.74?2:w<.9?3:4];gg.appendChild(cc);}
 const repos=[{name:'Auto-Job-Fill-Pro',url:'https://github.com/devdAigen/Auto-Job-Fill-Pro',desc:'Auto-fill job portals via Chrome extension',lang:'JavaScript',stars:0},{name:'TheMostSearched',url:'https://github.com/devdAigen/TheMostSearched',desc:'Guess which item has more searches',lang:'CSS',stars:0},{name:'E-Cart',url:'https://github.com/devdAigen/E-Cart',desc:'Full-stack e-commerce app',lang:'C#',stars:1},{name:'Movie-crawler',url:'https://github.com/devdAigen/Movie-crawler',desc:'Aggregates movies from multiple sources',lang:'JavaScript',stars:1},{name:'Azure-Search-service',url:'https://github.com/devdAigen/Azure-Search-service',desc:'Azure Cognitive Search integration',lang:'TypeScript',stars:0},{name:'Netfliex-Prime',url:'https://github.com/devdAigen/Netfliex-Prime',desc:'Netflix/Prime inspired UI',lang:'TypeScript',stars:1}];
 const lc={JavaScript:'#f7df1e',TypeScript:'#3178c6','C#':'#239120',CSS:'#264de4'};
@@ -587,7 +674,7 @@ function initBoard(){board=[['r','n','b','q','k','b','n','r'],['p','p','p','p','
 const isW=p=>p&&p===p.toUpperCase(),isB=p=>p&&p===p.toLowerCase();
 const owns=(p,t)=>t==='white'?isW(p):isB(p),enemy=(p,t)=>t==='white'?isB(p):isW(p);
 function getMoves(r,c,bd,t){const p=bd[r][c];if(!p)return[];const moves=[];const slide=(dr,dc)=>{let nr=r+dr,nc=c+dc;while(nr>=0&&nr<8&&nc>=0&&nc<8){if(bd[nr][nc]){if(enemy(bd[nr][nc],t))moves.push([nr,nc]);break;}moves.push([nr,nc]);nr+=dr;nc+=dc;}};const pt=p.toUpperCase();if(pt==='P'){const dir=isW(p)?-1:1,st=isW(p)?6:1;if(r+dir>=0&&r+dir<8&&!bd[r+dir][c]){moves.push([r+dir,c]);if(r===st&&!bd[r+2*dir][c])moves.push([r+2*dir,c]);}[[r+dir,c-1],[r+dir,c+1]].forEach(([nr,nc])=>{if(nr>=0&&nr<8&&nc>=0&&nc<8&&enemy(bd[nr][nc],t))moves.push([nr,nc]);});}else if(pt==='N'){[[-2,-1],[-2,1],[-1,-2],[-1,2],[1,-2],[1,2],[2,-1],[2,1]].forEach(([dr,dc])=>{const nr=r+dr,nc=c+dc;if(nr>=0&&nr<8&&nc>=0&&nc<8&&!owns(bd[nr][nc],t))moves.push([nr,nc]);});}else if(pt==='B'){[[-1,-1],[-1,1],[1,-1],[1,1]].forEach(([dr,dc])=>slide(dr,dc));}else if(pt==='R'){[[-1,0],[1,0],[0,-1],[0,1]].forEach(([dr,dc])=>slide(dr,dc));}else if(pt==='Q'){[[-1,-1],[-1,1],[1,-1],[1,1],[-1,0],[1,0],[0,-1],[0,1]].forEach(([dr,dc])=>slide(dr,dc));}else if(pt==='K'){[[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]].forEach(([dr,dc])=>{const nr=r+dr,nc=c+dc;if(nr>=0&&nr<8&&nc>=0&&nc<8&&!owns(bd[nr][nc],t))moves.push([nr,nc]);});}return moves.filter(([nr,nc])=>!owns(bd[nr][nc],t));}
-function renderChess(){const cb=document.getElementById('chessBoard');cb.innerHTML='';for(let r=0;r<8;r++)for(let c=0;c<8;c++){const sq=document.createElement('div');sq.className='csq '+((r+c)%2===0?'light':'dark');const p=board[r][c];if(p){sq.textContent=PIECES[p];sq.style.color=isW(p)?'#e8d5b0':'#00f5ff';if(isW(p))sq.style.textShadow='0 0 6px rgba(232,213,176,.5)';else sq.style.textShadow='var(--glow1)';}if(selected&&selected[0]===r&&selected[1]===c)sq.classList.add('selected');if(selected&&!gameOver&&turn==='white'){const mvs=getMoves(selected[0],selected[1],board,turn);if(mvs.some(([mr,mc])=>mr===r&&mc===c))sq.classList.add('possible');}sq.onclick=()=>handleClick(r,c);cb.appendChild(sq);}}
+function renderChess(){const cb=document.getElementById('chessBoard');cb.innerHTML='';for(let r=0;r<8;r++)for(let c=0;c<8;c++){const sq=document.createElement('div');sq.className='csq '+((r+c)%2===0?'light':'dark');const p=board[r][c];if(p){sq.textContent=PIECES[p];sq.style.color=isW(p)?'#a16207':'#2563eb';if(isW(p))sq.style.textShadow='0 0 6px rgba(161,98,7,.15)';else sq.style.textShadow='var(--glow1)';}if(selected&&selected[0]===r&&selected[1]===c)sq.classList.add('selected');if(selected&&!gameOver&&turn==='white'){const mvs=getMoves(selected[0],selected[1],board,turn);if(mvs.some(([mr,mc])=>mr===r&&mc===c))sq.classList.add('possible');}sq.onclick=()=>handleClick(r,c);cb.appendChild(sq);}}
 function handleClick(r,c){if(gameOver||turn!=='white')return;const p=board[r][c];if(selected){const mvs=getMoves(selected[0],selected[1],board,turn);if(mvs.some(([mr,mc])=>mr===r&&mc===c)){applyMove(selected[0],selected[1],r,c,'white');selected=null;if(!gameOver){turn='black';setInfo('⏳ AI PROCESSING...');renderChess();setTimeout(aiMove,420);}return;}}if(p&&isW(p)){selected=[r,c];setInfo(`<strong>SELECTED:</strong> ${PIECES[p]} — pick destination`);}else selected=null;renderChess();}
 function applyMove(fr,fc,tr,tc,t){const cap=board[tr][tc];moveHistory.push({fr,fc,tr,tc,fp:board[fr][fc],cap,snap:board.map(r=>[...r])});let p=board[fr][fc];if(p==='P'&&tr===0)p='Q';if(p==='p'&&tr===7)p='q';board[tr][tc]=p;board[fr][fc]=null;if(cap&&cap.toUpperCase()==='K'){gameOver=true;setInfo(t==='white'?'<span style="color:var(--neon4)">// YOU WIN! KING CAPTURED</span>':'<span style="color:var(--neon3)">// AI WINS. GAME OVER</span>');}renderChess();}
 function aiMove(){const pv={'P':1,'R':5,'N':3,'B':3,'Q':9,'K':100};const all=[];for(let r=0;r<8;r++)for(let c=0;c<8;c++)if(isB(board[r][c]))getMoves(r,c,board,'black').forEach(([mr,mc])=>all.push({fr:r,fc:c,tr:mr,tc:mc,val:board[mr][mc]?pv[board[mr][mc].toUpperCase()]||0:0}));if(!all.length){setInfo('// STALEMATE');gameOver=true;return;}all.sort((a,b)=>b.val-a.val);const top=all.slice(0,3);const mv=top[Math.floor(Math.random()*top.length)];applyMove(mv.fr,mv.fc,mv.tr,mv.tc,'black');if(!gameOver){turn='white';setInfo('<strong>YOUR TURN (WHITE)</strong>');}}
@@ -611,6 +698,25 @@ function renderKeys(){const kc=document.getElementById('hangmanKeys');kc.innerHT
 loadLeaders();initHangman();
 
 // ===== SCROLL TOP =====
+// ===== THEME TOGGLE =====
+(function(){
+  const tbtn=document.getElementById('theme-toggle');
+  if(!tbtn) return;
+  const KEY='ds_theme_pref';
+  const saved=localStorage.getItem(KEY);
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if(saved==='dark' || (!saved && prefersDark)) document.body.classList.add('dark');
+  update();
+  tbtn.addEventListener('click', ()=>{
+    document.body.classList.toggle('dark');
+    localStorage.setItem(KEY, document.body.classList.contains('dark') ? 'dark' : 'light');
+    update();
+  });
+  function update(){
+    if(document.body.classList.contains('dark')){tbtn.textContent='☀️';tbtn.style.color='var(--neon4)';}
+    else {tbtn.textContent='🌙';tbtn.style.color='var(--neon)';}
+  }
+})();
 window.addEventListener('scroll',()=>{document.getElementById('scrolltop').style.display=window.scrollY>400?'block':'none';});
 const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible');});},{threshold:.07});
 document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
